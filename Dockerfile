@@ -1,5 +1,5 @@
 ##BASE IMAGE
-FROM python:3.12-slim 
+FROM python:3.12-alpine 
 
 ##UPDATING PACKAGES
 RUN apt-get update -y && apt-get upgrade -y && apt-get clean 
