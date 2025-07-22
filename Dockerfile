@@ -15,7 +15,7 @@ WORKDIR /app
 COPY . .
 
 ###INSTALLING DEPENDENCIES OF CODE
-RUN pip install -r requirements.txt && pip install setuptools>=78.1.1
+RUN pip install -r requirements.txt && pip install "setuptools>=78.1.1"
  
 
 ###EXPOSING THE PORT
