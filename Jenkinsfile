@@ -110,6 +110,19 @@ pipeline {
                 """
             }
         }
+       
+        stage("Manual Approval for Production Deploy") {
+            when {
+                branch 'main'
+                not {
+                    changeRequest()
+                }
+            }
+            steps {
+                input message: "Approve deployment to Production?"
+            }
+        }
+
     }
 
     post {
