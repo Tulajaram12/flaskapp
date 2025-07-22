@@ -2,7 +2,7 @@
 FROM python:3.12-slim 
 
 ##UPDATING PACKAGES
-RUN apt-get update -y && apt-get upgrade -y 
+RUN apt-get update -y && apt-get upgrade -y && apt-get clean 
 
 ###USER
 RUN useradd tulaja && usermod -s /bin/bash tulaja && mkdir /home/tulaja && chown tulaja:tulaja /home/tulaja
@@ -15,12 +15,8 @@ WORKDIR /app
 COPY . .
 
 ###INSTALLING DEPENDENCIES OF CODE
-RUN pip install -r requirements.txt 
-
-### TO MITIGATE SECURITY VUNLERABILITIES ADDED
-#RUN pip install "setuptools>=78.1.1" 
-
-
+RUN pip install -r requirements.txt && pip install setuptools>=78.1.1
+ 
 
 ###EXPOSING THE PORT
 EXPOSE 5000
